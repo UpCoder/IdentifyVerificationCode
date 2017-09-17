@@ -1,0 +1,3 @@
+- 本项目主要用于识别验证码
+    - 可以识别的验证码如下图所示：
+        - ![image](http://ocnsbpp0d.bkt.clouddn.com/0K8Y.jpg)
