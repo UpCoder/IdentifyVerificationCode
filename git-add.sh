@@ -5,3 +5,4 @@ git add ./DataSet/*.py
 git add ./tools/*.py
 git add ./Net/ResNet-MultiTask/*.py
 git add ./Net/ResNet/*.py
+git add ./images/*
