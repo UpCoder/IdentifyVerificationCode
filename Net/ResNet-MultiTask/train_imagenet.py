@@ -73,13 +73,16 @@ def main(_):
     images, labels = tf.cond(is_training,
                              lambda: (train_images, train_labels),
                              lambda: (val_images, val_labels))
-    logits = inference(images,
-                       num_classes=36*4,
-                       is_training=True,
-                       bottleneck=False,)
+    logits_multi_task = []
+    for i in range(FLAGS.letter_num_per_vc):
+        logits = inference(images,
+                           task_name='task_' + str(i),
+                           num_classes=FLAGS.max_single_vc_length,
+                           is_training=True,
+                           bottleneck=False,)
+        logits_multi_task.append(logits)
     save_model_path = '/home/give/PycharmProjects/AIChallenger/ResNet/models'
-    print 'logits shape is ', logits
-    train(is_training, logits, images, labels, save_model_path=save_model_path)
+    train(is_training, logits_multi_task, images, labels, save_model_path=save_model_path)
 
 
 if __name__ == '__main__':

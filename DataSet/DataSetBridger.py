@@ -39,7 +39,10 @@ if __name__ == '__main__':
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
     while True:
         try:
-            print np.shape(sess.run(image_batch))
+            batch_label = sess.run(label_batch)
+            print batch_label[0]
+            print np.shape(sess.run(label_batch))
+            # print sess.run(label_batch)
         except Exception, error:
             print 'finish', error.message
             break
