@@ -14,12 +14,12 @@ tf.app.flags.DEFINE_string('log_dir', './log/train',
                            """The Summury output directory""")
 tf.app.flags.DEFINE_string('log_val_dir', './log/val',
                            """The Summury output directory""")
-tf.app.flags.DEFINE_float('learning_rate', 0.01, "learning rate.")
+tf.app.flags.DEFINE_float('learning_rate', 0.001, "learning rate.")
 tf.app.flags.DEFINE_integer('batch_size', 32, "batch size")
 tf.app.flags.DEFINE_integer('max_steps', 500000, "max steps")
 tf.app.flags.DEFINE_integer('max_single_vc_length', 36, 'the length of vc code, contain 0-9 a-z')
 tf.app.flags.DEFINE_integer('letter_num_per_vc', 4, 'the count of letter for per vc')
-tf.app.flags.DEFINE_boolean('resume', False,
+tf.app.flags.DEFINE_boolean('resume', True,
                             'resume from latest saved state')
 tf.app.flags.DEFINE_boolean('minimal_summaries', True,
                             'produce fewer summaries to save HD space')

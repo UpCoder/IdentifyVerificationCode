@@ -13,9 +13,10 @@ def generate_batch_data(image_dir,
                         num_epochs=None,
                         shuffle=False,
                         batch_size=128,
+                        is_pathes=False,
                         image_size=[256, 256],
                         num_processing_threads=4):
-    dataset = DataSet(image_dir)
+    dataset = DataSet(image_dir, is_pathes)
     return generate_image_batch_by_filename(
         dataset,
         num_epochs,

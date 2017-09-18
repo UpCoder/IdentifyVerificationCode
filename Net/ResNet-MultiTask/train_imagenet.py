@@ -62,8 +62,8 @@ def load_data(data_dir):
 def distorted_inputs():
     train_image_dir = '/home/give/Documents/dataset/VerficationCode/Captcha/captcha_train_gray'
     val_image_dir = '/home/give/Documents/dataset/VerficationCode/Captcha/captcha_val_gray'
-    train_image_batch, train_label_batch = generate_batch_data(train_image_dir, batch_size=FLAGS.batch_size)
-    val_image_batch, val_label_batch = generate_batch_data(val_image_dir, batch_size=FLAGS.batch_size)
+    train_image_batch, train_label_batch = generate_batch_data(train_image_dir, batch_size=FLAGS.batch_size, shuffle=True)
+    val_image_batch, val_label_batch = generate_batch_data(val_image_dir, batch_size=FLAGS.batch_size, shuffle=True)
     return [train_image_batch, train_label_batch], [val_image_batch, val_label_batch]
 
 

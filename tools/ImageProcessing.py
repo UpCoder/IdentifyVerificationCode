@@ -98,8 +98,23 @@ def copy_result_to(result_dict, org_dir, target_dir):
         image = Image.open(image_path)
         image.save(os.path.join(target_dir, result_dict[key]+'.jpg'))
 
+
+'''
+    根据label和predict_res 计算准确率
+'''
+def cal_accuracy(labels, predict_res):
+    right_count = 0.0
+    for index, label in enumerate(labels):
+        if label == predict_res[index]:
+            right_count += 1
+    return right_count/len(labels)
 if __name__ == '__main__':
     convert_images_gray(
         '/home/give/Documents/dataset/VerficationCode/Captcha/ new_dataset/data',
         '/home/give/Documents/dataset/VerficationCode/Captcha/ new_dataset/data')
     # print vec2txt(txt2vec('zzzz'))
+
+    # convert_images_gray(
+    #     '/home/give/Documents/dataset/VerficationCode/Captcha/test_images',
+    #     '/home/give/Documents/dataset/VerficationCode/Captcha/test_images_gray')
+    print vec2txt(txt2vec('zzzz'))
