@@ -65,13 +65,41 @@ def vec2num(vec, vc_len = 4, letter_len=36):
         num += np.argmax(vec[i*letter_len:(i+1)*letter_len])*((4)**(vc_len-i-1))
     return num
 '''
-    将一个label转化为txt
-    :param label 对应的ｌａｂｅｌ值
+    将一个vec转化为txt
+    :param vec 对应的vec值
+    :param vc_len 代表的是一个验证码的长度
+    :param letter_len 代表的是每个验证码字符的组成
     :return 返回我们的文本
 '''
+def vec2txt(vec, vc_len=4, letter_len=36):
+    txt = ''
+    for i in range(vc_len):
+        start = i * letter_len
+        end = (i+1) * letter_len
+        word = vec[start:end]
+        one_index = np.argmax(word)
+        if one_index <= 9:
+            txt += str(one_index)
+        else:
+            txt += chr(ord('a') + (one_index-10))
+    return txt
+
+
+'''
+    将图片转移到指令目录，并且用指定的名字
+    :param result_dict 结果的字典类型的数据，key是文件名，value是预测的验证码值
+    :param org_dir 存放图像的文件夹
+    :param target_dir 预测结果的文件夹
+    
+'''
+def copy_result_to(result_dict, org_dir, target_dir):
+    for key in result_dict.keys():
+        image_path = os.path.join(org_dir, key)
+        image = Image.open(image_path)
+        image.save(os.path.join(target_dir, result_dict[key]+'.jpg'))
 
 if __name__ == '__main__':
     # convert_images_gray(
     #     '/home/give/Documents/dataset/VerficationCode/Captcha/test_images',
     #     '/home/give/Documents/dataset/VerficationCode/Captcha/test_images_gray')
-    print vec2num(txt2vec('zzzz'))
+    print vec2txt(txt2vec('zzzz'))
